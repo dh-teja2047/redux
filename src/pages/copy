@@ -1,0 +1,92 @@
+import React, { useEffect, useState } from 'react';
+import { connect, useDispatch, useSelector } from 'react-redux';
+import { fetchUsers } from '../redux/userActions';
+import CustomTable from '../Table/CustomTable';
+import getUserProfiles from './userProfileSlice';
+
+export default function UserProfileContainer({ }) {
+  const dispatch = useDispatch();
+
+  const state = useSelector((state) => state.profiles)
+
+  useEffect(() => {
+    dispatch(getUserProfiles())    
+    console.log(state.data)    
+  }, [])
+  // useEffect(() => {
+  //     console.log("Fetching users...");
+  //     fetchUsers();
+  // }, []);
+
+  // console.log("userData:", userData);
+
+  // if (!userData) {
+  //     return <h4>No user data available.</h4>;
+  // }
+
+  // if(!data){
+  //   return <h4>No user data available.</h4>;
+  // }
+
+  // return userData.loading ? (
+  //     <h4>Loading...</h4>
+  // ) : userData.error ? (
+  //     <h4>{userData.error}</h4>
+  // ) : (
+  //     <div>
+  //         {userData}
+  //         {/* <CustomTable data={userData} headers={['username', 'userIdd', 'email', 'city', 'contactNo', 'dateOfBirth']} /> */}
+  //     </div>
+  // );
+
+  return (
+    <div>
+      {/* {state.loading && <p>Loading data...</p>}
+          {state.error && <p>Error: {state.error}</p>}
+          {state.data && <p>Data: {state.data}</p>}  */}
+          {/* console.log(state.data) */}
+      { state.data}
+
+    </div>
+  );
+
+
+
+// if(state.loading){
+
+//   return (<h1>....loading</h1>)
+// }
+// else{
+
+//   return(
+
+//       <div>
+        
+// {
+//   state.data.response.data.map(({username, userIdd, email, city, contactNo, dateOfBirth})=>{
+
+//       return(
+
+
+// <div>
+//   <h5 >USERNAME</h5>
+//   <h6 key={username} >{username}</h6>
+//   <h5 >userIdd</h5>
+//   <h6 key={userIdd}>{userIdd}</h6>
+//   <h5 >email</h5>
+//   <h6 key={email}>{email}</h6>
+//   <h5 >city</h5>
+//   <h6 key={city}>{city}</h6>
+//   <h5>contactNo</h5>
+//   <h6 key={contactNo}>{contactNo}</h6>
+//   <h5>dateOfBirth</h5>
+//   <h6 key={dateOfBirth}>{dateOfBirth}</h6>
+ 
+// </div>
+//       )
+//   })
+// }
+
+//       </div>
+//   )
+}
